@@ -13,12 +13,19 @@ import net.gpedro.integrations.slack.SlackMessage;
 @Component
 public class SlackService 
 {
+	String userChannel;
+	String userUsername;
+	String userMessage;
+	
 	// #integration webhook url.  Create your own channel and add the webhook app.  Then update this with your value.
 	private String webHookUrl = "https://hooks.slack.com/services/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";
 	private SlackApi api = new SlackApi(webHookUrl);
 	
 	public void sendMessage(String channel, String userName, String message) 
 	{
+		userChannel = channel;
+		userUsername = userName;
+		userMessage = message;
 		api.call(new SlackMessage(channel, userName, message));
 	}
 
