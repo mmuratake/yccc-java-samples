@@ -13,6 +13,7 @@ public class SlackUI {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -51,7 +52,10 @@ public class SlackUI {
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				
+				SlackService ss = new SlackService();
+				ss.userChannel = null;
+				ss.userUsername = textField_1.getText();
+				ss.userMessage = textField.getText();
 			}
 		});
 		btnSendMessage.setBounds(323, 227, 101, 23);
@@ -73,5 +77,10 @@ public class SlackUI {
 		textField.setBounds(21, 156, 382, 48);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(200, 73, 86, 20);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
 	}
 }
