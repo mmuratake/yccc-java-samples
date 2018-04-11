@@ -8,9 +8,6 @@ import net.gpedro.integrations.slack.SlackMessage;
 /**
  * First pass integration with slack. 
  * 
- * 
- * @author Mike Bourgeois
- *
  */
 
 @Component

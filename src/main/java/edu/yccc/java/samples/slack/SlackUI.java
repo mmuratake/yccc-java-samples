@@ -52,6 +52,17 @@ public class SlackUI {
 		});
 		btnSendMessage.setBounds(323, 227, 101, 23);
 		frame.getContentPane().add(btnSendMessage);
+		
+		JButton btnSendRandomMessage = new JButton("Send Random Message");
+		btnSendRandomMessage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				// TestSlackService tss = new TestSlackService();
+				// tss.testSendMessage();
+			}
+		});
+		btnSendRandomMessage.setBounds(10, 227, 158, 23);
+		frame.getContentPane().add(btnSendRandomMessage);
 	}
 
 }
