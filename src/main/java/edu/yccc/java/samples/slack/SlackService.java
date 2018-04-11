@@ -22,7 +22,7 @@ public class SlackService
 	
 	public void sendMessage(String channel, String userName, String message) 
 	{
-		api.call(new SlackMessage(channel, userName, message));
+		api.call(new SlackMessage("mamislackintegration", userName, message));
 	}
 
 }
