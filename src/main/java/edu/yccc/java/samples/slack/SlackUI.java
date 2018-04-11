@@ -51,6 +51,7 @@ public class SlackUI {
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
+				
 			}
 		});
 		btnSendMessage.setBounds(323, 227, 101, 23);
@@ -60,7 +61,7 @@ public class SlackUI {
 		lblChannel.setBounds(21, 11, 382, 23);
 		frame.getContentPane().add(lblChannel);
 		
-		JLabel lblUserName = new JLabel("Please input your name.");
+		JLabel lblUserName = new JLabel("Please input your user name.");
 		lblUserName.setBounds(21, 72, 193, 23);
 		frame.getContentPane().add(lblUserName);
 		
