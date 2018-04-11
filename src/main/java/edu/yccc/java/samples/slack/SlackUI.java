@@ -6,10 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class SlackUI {
 
 	private JFrame frame;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -53,16 +56,21 @@ public class SlackUI {
 		btnSendMessage.setBounds(323, 227, 101, 23);
 		frame.getContentPane().add(btnSendMessage);
 		
-		JButton btnSendRandomMessage = new JButton("Send Random Message");
-		btnSendRandomMessage.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				// TestSlackService tss = new TestSlackService();
-				// tss.testSendMessage();
-			}
-		});
-		btnSendRandomMessage.setBounds(10, 227, 158, 23);
-		frame.getContentPane().add(btnSendRandomMessage);
+		JLabel lblChannel = new JLabel("Please choose which channel you want to post to.");
+		lblChannel.setBounds(21, 11, 382, 23);
+		frame.getContentPane().add(lblChannel);
+		
+		JLabel lblUserName = new JLabel("Please input your name.");
+		lblUserName.setBounds(21, 72, 193, 23);
+		frame.getContentPane().add(lblUserName);
+		
+		JLabel lblMessage = new JLabel("Please input the message you would like to send.");
+		lblMessage.setBounds(21, 134, 382, 23);
+		frame.getContentPane().add(lblMessage);
+		
+		textField = new JTextField();
+		textField.setBounds(21, 156, 382, 48);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
 	}
-
 }
