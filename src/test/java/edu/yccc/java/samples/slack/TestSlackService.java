@@ -38,5 +38,6 @@ public class TestSlackService
 	{
 		slackService.sendMessage("mamislackintegration", "Webhook sample", getRandomMessage());
 	}
+	
 
 }
