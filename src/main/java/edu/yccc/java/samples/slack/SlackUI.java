@@ -8,12 +8,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JRadioButton;
 
 public class SlackUI {
 
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_2;
+	String channel;
+	String userName;
+	String message;
 
 	/**
 	 * Launch the application.
@@ -53,20 +58,28 @@ public class SlackUI {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				SlackService ss = new SlackService();
-				ss.userChannel = null;
-				ss.userUsername = textField_1.getText();
-				ss.userMessage = textField.getText();
+				channel = textField_2.getText();
+				userName = textField_1.getText();
+				message = textField.getText();
+				if(textField_2.equals(null) || textField_1.equals(null) || textField.equals(null))
+				{
+					System.out.println("There is a parameter you have not filled in. Please be sure to include all components before continuing.");
+				}
+				else
+				{
+					ss.sendMessage(channel, userName, message);
+				}
 			}
 		});
-		btnSendMessage.setBounds(323, 227, 101, 23);
+		btnSendMessage.setBounds(295, 227, 129, 23);
 		frame.getContentPane().add(btnSendMessage);
 		
 		JLabel lblChannel = new JLabel("Please choose which channel you want to post to.");
-		lblChannel.setBounds(21, 11, 382, 23);
+		lblChannel.setBounds(21, 11, 276, 23);
 		frame.getContentPane().add(lblChannel);
 		
 		JLabel lblUserName = new JLabel("Please input your user name.");
-		lblUserName.setBounds(21, 72, 193, 23);
+		lblUserName.setBounds(21, 72, 209, 23);
 		frame.getContentPane().add(lblUserName);
 		
 		JLabel lblMessage = new JLabel("Please input the message you would like to send.");
@@ -79,8 +92,13 @@ public class SlackUI {
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(200, 73, 86, 20);
+		textField_1.setBounds(200, 73, 122, 20);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(274, 12, 129, 20);
+		frame.getContentPane().add(textField_2);
+		textField_2.setColumns(10);
 	}
 }
