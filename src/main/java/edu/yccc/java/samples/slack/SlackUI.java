@@ -1,7 +1,6 @@
 package edu.yccc.java.samples.slack;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -9,6 +8,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+
+/**
+ * Mami Muratake 
+ * April 18 2018
+ * Project #3: Slack Integration  
+ * 
+ */
 
 public class SlackUI {
 
