@@ -19,5 +19,11 @@ public interface JustIdeasForNow {
 	// Just for when you need that up there.
 	
 	// Let's start out simple. You can get back to this later, just be able to do the actual thing.
+	
+	public void chooseChannel();
+	
+	public void chooseUserName();
+	
+	public void enterMessage();
 
 }
