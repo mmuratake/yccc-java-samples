@@ -13,9 +13,9 @@ import javax.swing.JRadioButton;
 public class SlackUI {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField textFieldMessage;
+	private JTextField textFieldName;
+	private JTextField textFieldChannel;
 	String channel;
 	String userName;
 	String message;
@@ -58,10 +58,10 @@ public class SlackUI {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				SlackService ss = new SlackService();
-				channel = textField_2.getText();
-				userName = textField_1.getText();
-				message = textField.getText();
-				if(textField_2.equals(null) || textField_1.equals(null) || textField.equals(null))
+				channel = textFieldChannel.getText();
+				userName = textFieldName.getText();
+				message = textFieldMessage.getText();
+				if(textFieldChannel.getText().isEmpty() || textFieldName.getText().isEmpty() || textFieldMessage.getText().isEmpty())
 				{
 					System.out.println("There is a parameter you have not filled in. Please be sure to include all components before continuing.");
 				}
@@ -86,19 +86,19 @@ public class SlackUI {
 		lblMessage.setBounds(21, 134, 382, 23);
 		frame.getContentPane().add(lblMessage);
 		
-		textField = new JTextField();
-		textField.setBounds(21, 156, 382, 48);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldMessage = new JTextField();
+		textFieldMessage.setBounds(21, 156, 382, 48);
+		frame.getContentPane().add(textFieldMessage);
+		textFieldMessage.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(200, 73, 122, 20);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		textFieldName = new JTextField();
+		textFieldName.setBounds(200, 73, 122, 20);
+		frame.getContentPane().add(textFieldName);
+		textFieldName.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(274, 12, 129, 20);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		textFieldChannel = new JTextField();
+		textFieldChannel.setBounds(274, 12, 129, 20);
+		frame.getContentPane().add(textFieldChannel);
+		textFieldChannel.setColumns(10);
 	}
 }
