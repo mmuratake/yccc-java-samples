@@ -74,21 +74,23 @@ public class SlackUI {
 				else
 				{
 					ss.sendMessage(channel, userName, message);
+					textFieldMessage.setText("");
+					System.out.println("Your message was successfully sent!");
 				}
 			}
 		});
 		btnSendMessage.setBounds(295, 227, 129, 23);
 		frame.getContentPane().add(btnSendMessage);
 		
-		JLabel lblChannel = new JLabel("Please choose which channel you want to post to.");
+		JLabel lblChannel = new JLabel("Input the channel you would like to post to.");
 		lblChannel.setBounds(21, 11, 276, 23);
 		frame.getContentPane().add(lblChannel);
 		
-		JLabel lblUserName = new JLabel("Please input your user name.");
+		JLabel lblUserName = new JLabel("Input your user name.");
 		lblUserName.setBounds(21, 72, 209, 23);
 		frame.getContentPane().add(lblUserName);
 		
-		JLabel lblMessage = new JLabel("Please input the message you would like to send.");
+		JLabel lblMessage = new JLabel("Input the message you would like to send.");
 		lblMessage.setBounds(21, 134, 382, 23);
 		frame.getContentPane().add(lblMessage);
 		
