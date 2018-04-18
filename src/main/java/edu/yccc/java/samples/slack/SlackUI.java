@@ -25,9 +25,6 @@ public class SlackUI {
 	private JTextField textFieldMessage;
 	private JTextField textFieldName;
 	private JTextField textFieldChannel;
-	String channel;
-	String userName;
-	String message;
 
 	/**
 	 * Launch the application.
@@ -67,16 +64,17 @@ public class SlackUI {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				SlackService ss = new SlackService();
-				channel = textFieldChannel.getText();
-				userName = textFieldName.getText();
-				message = textFieldMessage.getText();
+				SlackMessageTest smt = new SlackMessageTest();
+				smt.setChannel(textFieldChannel.getText());
+				smt.setUserName(textFieldName.getText());
+				smt.setMessage(textFieldMessage.getText());
 				if(textFieldChannel.getText().isEmpty() || textFieldName.getText().isEmpty() || textFieldMessage.getText().isEmpty())
 				{
 					System.out.println("There is a parameter you have not filled in. Please be sure to include all components before continuing.");
 				}
 				else
 				{
-					ss.sendMessage(channel, userName, message);
+					ss.sendMessage(smt.getChannel(), smt.getUserName(), smt.getMessage());
 					textFieldMessage.setText("");
 					System.out.println("Your message was successfully sent!");
 				}
@@ -125,7 +123,7 @@ public class SlackUI {
 				{
 					textFieldChannel.setEnabled(true);
 					comboBox.setEnabled(false);
-					channel = textFieldChannel.getText();
+					//channel = textFieldChannel.getText();
 				}
 				if(!rdbtnOther.isSelected())
 				{
