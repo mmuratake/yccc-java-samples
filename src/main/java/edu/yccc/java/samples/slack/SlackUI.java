@@ -7,7 +7,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JRadioButton;
+import javax.swing.JComboBox;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 /**
  * Mami Muratake 
@@ -108,5 +110,14 @@ public class SlackUI {
 		textFieldChannel.setBounds(274, 12, 129, 20);
 		frame.getContentPane().add(textFieldChannel);
 		textFieldChannel.setColumns(10);
+		
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setBounds(237, 42, 85, 20);
+		frame.getContentPane().add(comboBox);
+		
+		comboBox.addItem("#general");
+		comboBox.addItem("#integration");
+		
+		//comboBox.getSelectedItem();
 	}
 }

@@ -1,6 +1,6 @@
 package edu.yccc.java.samples.slack;
 
-public interface JustIdeasForNow {
+public class JustIdeasForNow {
 	
 	// All somethings need something. Let's say...
 	
@@ -20,10 +20,10 @@ public interface JustIdeasForNow {
 	
 	// Let's start out simple. You can get back to this later, just be able to do the actual thing.
 	
-	public void chooseChannel();
+	//public void chooseChannel();
 	
-	public void chooseUserName();
+	//public void chooseUserName();
 	
-	public void enterMessage();
+	//public void enterMessage();
 
 }
