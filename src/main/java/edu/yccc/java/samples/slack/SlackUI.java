@@ -24,9 +24,6 @@ public class SlackUI {
 	JTextField textFieldName;
 	JTextField textFieldChannel;
 	
-	String channel;
-	String userName;
-	String message;
 
 	/**
 	 * Launch the application.
@@ -66,16 +63,11 @@ public class SlackUI {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				SlackService ss = new SlackService();
-				channel = textFieldChannel.getText();
-				userName = textFieldName.getText();
-				message = textFieldMessage.getText();
+				
 				SlackMessageTest smt = new SlackMessageTest();
 				smt.setChannel(textFieldChannel.getText());
 				smt.setUserName(textFieldName.getText());
 				smt.setMessage(textFieldMessage.getText());
-				smt.getChannel();
-				smt.getUserName();
-				smt.getMessage();
 				
 				if(smt.getChannel().equals("") || smt.getUserName().equals("") || smt.getMessage().equals(""))
 				{
@@ -92,8 +84,8 @@ public class SlackUI {
 		btnSendMessage.setBounds(295, 227, 129, 23);
 		frame.getContentPane().add(btnSendMessage);
 		
-		JLabel lblChannel = new JLabel("Choose the channel you would like to post to.");
-		lblChannel.setBounds(21, 11, 276, 23);
+		JLabel lblChannel = new JLabel("Input the channel you would like to post to.");
+		lblChannel.setBounds(21, 22, 276, 23);
 		frame.getContentPane().add(lblChannel);
 		
 		JLabel lblUserName = new JLabel("Input your user name.");
@@ -110,12 +102,12 @@ public class SlackUI {
 		textFieldMessage.setColumns(10);
 		
 		textFieldName = new JTextField();
-		textFieldName.setBounds(200, 73, 122, 20);
+		textFieldName.setBounds(278, 73, 99, 20);
 		frame.getContentPane().add(textFieldName);
 		textFieldName.setColumns(10);
 		
 		textFieldChannel = new JTextField();
-		textFieldChannel.setBounds(325, 43, 99, 20);
+		textFieldChannel.setBounds(278, 23, 99, 20);
 		frame.getContentPane().add(textFieldChannel);
 		textFieldChannel.setColumns(10);	
 	}
