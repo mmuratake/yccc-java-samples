@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import javax.swing.JRadioButton;
 
 /**
  * Mami Muratake 
@@ -84,7 +85,7 @@ public class SlackUI {
 		btnSendMessage.setBounds(295, 227, 129, 23);
 		frame.getContentPane().add(btnSendMessage);
 		
-		JLabel lblChannel = new JLabel("Input the channel you would like to post to.");
+		JLabel lblChannel = new JLabel("Choose the channel you would like to post to.");
 		lblChannel.setBounds(21, 11, 276, 23);
 		frame.getContentPane().add(lblChannel);
 		
@@ -107,16 +108,39 @@ public class SlackUI {
 		textFieldName.setColumns(10);
 		
 		textFieldChannel = new JTextField();
-		textFieldChannel.setBounds(274, 12, 129, 20);
+		textFieldChannel.setBounds(325, 43, 99, 20);
 		frame.getContentPane().add(textFieldChannel);
 		textFieldChannel.setColumns(10);
+		textFieldChannel.setEnabled(false);
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(237, 42, 85, 20);
+		comboBox.setBounds(302, 12, 122, 20);
 		frame.getContentPane().add(comboBox);
+		
+		JRadioButton rdbtnOther = new JRadioButton("Other");
+		rdbtnOther.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if(rdbtnOther.isSelected())
+				{
+					textFieldChannel.setEnabled(true);
+					comboBox.setEnabled(false);
+					channel = textFieldChannel.getText();
+				}
+				if(!rdbtnOther.isSelected())
+				{
+					textFieldChannel.setEnabled(false);
+					comboBox.setEnabled(true);
+				}
+			}
+		});
+		rdbtnOther.setBounds(256, 43, 66, 23);
+		frame.getContentPane().add(rdbtnOther);
 		
 		comboBox.addItem("#general");
 		comboBox.addItem("#integration");
+		comboBox.addItem("mamislackintegration");
+		comboBox.addItem("mamitest");
 		
 		//comboBox.getSelectedItem();
 	}
