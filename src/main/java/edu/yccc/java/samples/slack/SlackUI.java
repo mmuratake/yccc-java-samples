@@ -7,8 +7,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 /**
  * Mami Muratake 
@@ -23,6 +24,8 @@ public class SlackUI {
 	JTextField textFieldMessage;
 	JTextField textFieldName;
 	JTextField textFieldChannel;
+	
+	Boolean urgent = false;
 	
 
 	/**
@@ -62,8 +65,6 @@ public class SlackUI {
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				SlackService ss = new SlackService();
-				
 				SlackMessage sm = new SlackMessage();
 				sm.setChannel(textFieldChannel.getText());
 				sm.setUserName(textFieldName.getText());
@@ -73,11 +74,19 @@ public class SlackUI {
 				{
 					System.out.println("There is a parameter you have not filled in. Please be sure to include all components before continuing.");
 				}
-				else
+				else if(urgent == false)
 				{
+					SlackService ss = new SlackService();
 					ss.sendMessage(sm.getChannel(), sm.getUserName(), sm.getMessage());
 					textFieldMessage.setText("");
 					System.out.println("Your message was successfully sent!");
+				}
+				else if(urgent == true)
+				{
+					UrgentSlackService uss = new UrgentSlackService();
+					uss.sendMessage(sm.getChannel(), sm.getUserName(), sm.getMessage());
+					textFieldMessage.setText("");
+					System.out.println("Your (urgent) message was successfully sent!");
 				}
 			}
 		});
@@ -109,8 +118,24 @@ public class SlackUI {
 		textFieldChannel = new JTextField();
 		textFieldChannel.setBounds(278, 23, 99, 20);
 		frame.getContentPane().add(textFieldChannel);
-		textFieldChannel.setColumns(10);	
+		textFieldChannel.setColumns(10);
+		
+		JCheckBox checkUrgent = new JCheckBox("Tag as Urgent");
+		checkUrgent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				if(checkUrgent.isSelected())
+				{
+					urgent = true;
+				}
+				else if(!checkUrgent.isSelected())
+				{
+					urgent = false;
+				}
+			}
+		});
+		
+		checkUrgent.setBounds(21, 202, 120, 23);
+		frame.getContentPane().add(checkUrgent);
 	}
-	
-	
 }
