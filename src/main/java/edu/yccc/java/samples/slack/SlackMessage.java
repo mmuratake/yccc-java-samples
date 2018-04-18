@@ -1,6 +1,6 @@
 package edu.yccc.java.samples.slack;
 
-public class SlackMessageTest {
+public class SlackMessage {
 	
 	String channel;
 	String userName;

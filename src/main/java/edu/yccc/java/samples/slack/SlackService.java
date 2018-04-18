@@ -30,7 +30,7 @@ import net.gpedro.integrations.slack.SlackMessage;
  */
 
 @Component
-public class SlackService 
+public class SlackService implements SlackServiceInterface
 {
 
 	private String webHookUrl = "https://hooks.slack.com/services/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";

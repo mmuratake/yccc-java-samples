@@ -64,18 +64,18 @@ public class SlackUI {
 			{
 				SlackService ss = new SlackService();
 				
-				SlackMessageTest smt = new SlackMessageTest();
-				smt.setChannel(textFieldChannel.getText());
-				smt.setUserName(textFieldName.getText());
-				smt.setMessage(textFieldMessage.getText());
+				SlackMessage sm = new SlackMessage();
+				sm.setChannel(textFieldChannel.getText());
+				sm.setUserName(textFieldName.getText());
+				sm.setMessage(textFieldMessage.getText());
 				
-				if(smt.getChannel().equals("") || smt.getUserName().equals("") || smt.getMessage().equals(""))
+				if(sm.getChannel().equals("") || sm.getUserName().equals("") || sm.getMessage().equals(""))
 				{
 					System.out.println("There is a parameter you have not filled in. Please be sure to include all components before continuing.");
 				}
 				else
 				{
-					ss.sendMessage(smt.getChannel(), smt.getUserName(), smt.getMessage());
+					ss.sendMessage(sm.getChannel(), sm.getUserName(), sm.getMessage());
 					textFieldMessage.setText("");
 					System.out.println("Your message was successfully sent!");
 				}
