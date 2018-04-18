@@ -25,8 +25,8 @@ public class SlackUI {
 	JTextField textFieldName;
 	JTextField textFieldChannel;
 	
+	// Determines whether the message to be sent is an urgent one or a normal one. Typically it's normal.
 	Boolean urgent = false;
-	
 
 	/**
 	 * Launch the application.
@@ -70,21 +70,29 @@ public class SlackUI {
 				sm.setUserName(textFieldName.getText());
 				sm.setMessage(textFieldMessage.getText());
 				
+				// Make sure that the user included all the components of a message.
 				if(sm.getChannel().equals("") || sm.getUserName().equals("") || sm.getMessage().equals(""))
 				{
 					System.out.println("There is a parameter you have not filled in. Please be sure to include all components before continuing.");
 				}
+				
+				// If they haven't checked the urgent button.
 				else if(urgent == false)
 				{
 					SlackService ss = new SlackService();
 					ss.sendMessage(sm.getChannel(), sm.getUserName(), sm.getMessage());
+					
+					// Clear the text field so the user won't have to, let them know their message was sent.
 					textFieldMessage.setText("");
 					System.out.println("Your message was successfully sent!");
 				}
+				// If they have checked the urgent button.
 				else if(urgent == true)
 				{
 					UrgentSlackService uss = new UrgentSlackService();
 					uss.sendMessage(sm.getChannel(), sm.getUserName(), sm.getMessage());
+					
+					// Clear the text field so the user won't have to, let them know their message was sent.
 					textFieldMessage.setText("");
 					System.out.println("Your (urgent) message was successfully sent!");
 				}
@@ -134,7 +142,6 @@ public class SlackUI {
 				}
 			}
 		});
-		
 		checkUrgent.setBounds(21, 202, 120, 23);
 		frame.getContentPane().add(checkUrgent);
 	}
