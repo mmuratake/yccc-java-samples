@@ -82,7 +82,7 @@ public class SlackUI {
 					
 					// Clear the text field so the user won't have to, let them know their message was sent.
 					textFieldMessage.setText("");
-					System.out.println("Your message was successfully sent!");
+					ss.informUser();
 				}
 				// If they have checked the urgent button.
 				else if(urgent == true)
@@ -92,7 +92,7 @@ public class SlackUI {
 					
 					// Clear the text field so the user won't have to, let them know their message was sent.
 					textFieldMessage.setText("");
-					System.out.println("Your (urgent) message was successfully sent!");
+					uss.informUser();
 				}
 			}
 		});
@@ -108,11 +108,11 @@ public class SlackUI {
 		frame.getContentPane().add(lblUserName);
 		
 		JLabel lblMessage = new JLabel("Input the message you would like to send.");
-		lblMessage.setBounds(21, 134, 382, 23);
+		lblMessage.setBounds(21, 127, 382, 23);
 		frame.getContentPane().add(lblMessage);
 		
 		textFieldMessage = new JTextField();
-		textFieldMessage.setBounds(21, 156, 382, 48);
+		textFieldMessage.setBounds(21, 148, 382, 48);
 		frame.getContentPane().add(textFieldMessage);
 		textFieldMessage.setColumns(10);
 		

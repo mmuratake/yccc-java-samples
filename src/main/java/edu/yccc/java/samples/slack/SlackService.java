@@ -43,4 +43,9 @@ public class SlackService implements SlackServiceInterface
 		api.call(new SlackMessage(channel, userName, message));
 	}
 
+	public void informUser() 
+	{
+		System.out.println("Your message was successfully sent!");
+	}
+
 }

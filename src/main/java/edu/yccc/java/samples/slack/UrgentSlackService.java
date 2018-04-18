@@ -25,4 +25,9 @@ public class UrgentSlackService implements SlackServiceInterface{
 		api.call(new SlackMessage(channel, userName, "URGENT: " + message));
 	}
 
+	public void informUser() 
+	{
+		System.out.println("Your (urgent) message was successfully sent!");
+	}
+
 }

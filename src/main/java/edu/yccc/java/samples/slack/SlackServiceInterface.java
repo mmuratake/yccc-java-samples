@@ -15,5 +15,8 @@ public interface SlackServiceInterface {
 	
 	// All Slack Services need to have the ability to send messages.
 	public void sendMessage(String channel, String userName, String message);
+	
+	// They should also let the user know the message was sent.
+	public void informUser();
 
 }
