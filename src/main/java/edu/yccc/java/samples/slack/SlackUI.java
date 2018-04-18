@@ -8,8 +8,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
 import javax.swing.JRadioButton;
 
 /**
@@ -22,9 +20,13 @@ import javax.swing.JRadioButton;
 public class SlackUI {
 
 	private JFrame frame;
-	private JTextField textFieldMessage;
-	private JTextField textFieldName;
-	private JTextField textFieldChannel;
+	JTextField textFieldMessage;
+	JTextField textFieldName;
+	JTextField textFieldChannel;
+	
+	String channel;
+	String userName;
+	String message;
 
 	/**
 	 * Launch the application.
@@ -64,11 +66,18 @@ public class SlackUI {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				SlackService ss = new SlackService();
+				channel = textFieldChannel.getText();
+				userName = textFieldName.getText();
+				message = textFieldMessage.getText();
 				SlackMessageTest smt = new SlackMessageTest();
 				smt.setChannel(textFieldChannel.getText());
 				smt.setUserName(textFieldName.getText());
 				smt.setMessage(textFieldMessage.getText());
-				if(textFieldChannel.getText().isEmpty() || textFieldName.getText().isEmpty() || textFieldMessage.getText().isEmpty())
+				smt.getChannel();
+				smt.getUserName();
+				smt.getMessage();
+				
+				if(smt.getChannel().equals("") || smt.getUserName().equals("") || smt.getMessage().equals(""))
 				{
 					System.out.println("There is a parameter you have not filled in. Please be sure to include all components before continuing.");
 				}
@@ -108,38 +117,8 @@ public class SlackUI {
 		textFieldChannel = new JTextField();
 		textFieldChannel.setBounds(325, 43, 99, 20);
 		frame.getContentPane().add(textFieldChannel);
-		textFieldChannel.setColumns(10);
-		textFieldChannel.setEnabled(false);
-		
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(302, 12, 122, 20);
-		frame.getContentPane().add(comboBox);
-		
-		JRadioButton rdbtnOther = new JRadioButton("Other");
-		rdbtnOther.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				if(rdbtnOther.isSelected())
-				{
-					textFieldChannel.setEnabled(true);
-					comboBox.setEnabled(false);
-					//channel = textFieldChannel.getText();
-				}
-				if(!rdbtnOther.isSelected())
-				{
-					textFieldChannel.setEnabled(false);
-					comboBox.setEnabled(true);
-				}
-			}
-		});
-		rdbtnOther.setBounds(256, 43, 66, 23);
-		frame.getContentPane().add(rdbtnOther);
-		
-		comboBox.addItem("#general");
-		comboBox.addItem("#integration");
-		comboBox.addItem("mamislackintegration");
-		comboBox.addItem("mamitest");
-		
-		//comboBox.getSelectedItem();
+		textFieldChannel.setColumns(10);	
 	}
+	
+	
 }
